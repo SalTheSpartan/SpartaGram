@@ -2,7 +2,7 @@
 
 <h2><%= @post.title %></h2>
 <p><%= @post.caption %></p>
-<p>Submitted by <%= current_user.email%></p>
+<p>Submitted by <%= current_user.name%></p>
 
 <%= link_to "Back" , root_path %>
 <%= link_to "Edit" , edit_post_path %>
