@@ -1,2 +1,7 @@
-<h1><%= @post.title %></h1>
+<h1>Show Post Page</h1>
+
+<h2><%= @post.title %></h2>
 <p><%= @post.caption %></p>
+
+<%= link_to "Back" , root_path %>
+<%= link_to "Edit" , edit_post_path %>

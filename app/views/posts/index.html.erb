@@ -1,1 +1,7 @@
-<h1>hello</h1>
+<div class="container">
+<h1>Post index page</h1>
+
+<% @posts.each do |post| %>
+<li><%= link_to post.title , post%></li>
+<% end %>
+</div>
