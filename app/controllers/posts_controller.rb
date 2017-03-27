@@ -12,6 +12,7 @@ class PostsController < ApplicationController
 
   def new #display the new posts
     @post = Post.new
+    # puts current_user.
 
     #add template
   end
@@ -23,6 +24,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to @post, notice: "Succesfully created a new Post"
     else
+      binding.pry
       render "new"
     end
 
