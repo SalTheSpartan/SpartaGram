@@ -9,8 +9,26 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+
+      <div class="container">
+        <div class="navbar-brand"><%= link_to "Posts" , root_path %></div>
+
+          <% if user_signed_in? %>
+          <ul class=" navbar-nav navbar-right">
+            <li class="nav-item"><a class="nav-link" href="#"><%= link_to "New Post", new_post_path %></a></li>
+            <li class="nav-item"><a class="nav-link" href="#"><%= link_to "Account", edit_user_registration_path %></a></li>
+            <li class="nav-item"><a class="nav-link" href="#"><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></a></li>
+
+
+          </ul>
+          <% end %>
+      </div>
+    </nav>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <div class="container">
     <%= yield %>
+    </div>
   </body>
 </html>
