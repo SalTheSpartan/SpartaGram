@@ -1,10 +1,18 @@
 <h1>Show Post Page</h1>
 
 <h2><%= @post.title %></h2>
-<img src="<%= @post.image.thumb.url %>"  style="width:202px;height:138px;margin-bottom: 39px;"/>
+<img src="<%= @post.image.small.url %>" />
 <p><%= @post.caption %></p>
 <p>Submitted by <%= current_user.name%></p>
 
+<form class="" action="<%= upload_insta_path %>" method="post">
+
+<button type="submit" class="btn btn-primary">Upload To Instagram</button>
+
+<input type="hidden" name="id" value="<%= @post.id %>">
+<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+
+</form>
 <%= link_to "Back" , root_path %>
 <%= link_to "Edit" , edit_post_path %>
 <%= link_to "Delete" , post_path , method: :delete, data: { confirm: "Are you Sure?"}%>
