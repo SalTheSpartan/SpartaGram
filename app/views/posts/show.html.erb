@@ -1,6 +1,7 @@
 <h1>Show Post Page</h1>
 
 <h2><%= @post.title %></h2>
+<img src="<%= @post.image.thumb.url %>"  style="width:202px;height:138px;margin-bottom: 39px;"/>
 <p><%= @post.caption %></p>
 <p>Submitted by <%= current_user.name%></p>
 

@@ -39,7 +39,6 @@ class PostsController < ApplicationController
   def update #save changes
     @post = Post.find(params[:id])
 
-
     if @post.update(post_params)
       redirect_to @post, notice: "Succesfully updated"
     else
@@ -62,6 +61,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :caption)
+    params.require(:post).permit(:title, :caption, :image)
   end
 end
