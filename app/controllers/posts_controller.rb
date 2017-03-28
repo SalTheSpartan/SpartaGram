@@ -10,6 +10,11 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
 
     #add template
+    upload_insta
+  end
+  def upload_insta
+    uploader = InstagramUploader::Uploader.new('07712677611', 'emem1993')
+    uploader.upload('public/uploads/post/image/9/20170226_222314.jpg', 'image_description')
   end
 
   def new #display the new posts
@@ -20,6 +25,8 @@ class PostsController < ApplicationController
   end
 
   def create #save new posts
+    @uploader = InstagramUploader::Uploader.new('spartasudoh', 'emem1993')
+
     @post = Post.new(post_params)
 
     #will save and rediret
