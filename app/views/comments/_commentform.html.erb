@@ -1,0 +1,8 @@
+<form class="" action="<%= post_comments_path @post%>" method="Post"  style="width: 200px;">
+
+  <label>Write a comment </label>
+  <textarea name="comment[content]"></textarea>
+  <input type="submit" value="Post comment">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+
+</form>

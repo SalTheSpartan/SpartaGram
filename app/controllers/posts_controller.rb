@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   end
 
   def show #show lists of all posts
+    @comments = Comment.where(post_id: @post)
     @post = Post.find(params[:id])
 
     #add template

@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
-  belongs_to :user, optional: true
+  belongs_to :user
+  has_many :comments
   mount_uploader :image, ImageUploader
 
 end

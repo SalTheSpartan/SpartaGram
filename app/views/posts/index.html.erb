@@ -6,5 +6,6 @@
 <% @posts.each do |post| %>
 <li><%= link_to post.title , post%></li>
 <img src="<%= post.image.small.url %>"/>
+<p><%= post.comments.count %> Comments</p>
 <% end %>
 </div>

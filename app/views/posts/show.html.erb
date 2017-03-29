@@ -13,6 +13,25 @@
 <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 
 </form>
+
+
+  <%= pluralize(@post.comments.count, "Comment") %>
+  <% @comments.each do |comment| %>
+    <div class="comment">
+      <h2>
+      <p class="username">
+        <%= comment.user.name %>
+      </p>
+      </h2>
+      <p class="content">
+        <%= comment.content %>
+      </p>
+    </div>
+  <% end %>
+  <%= render "comments/commentform" %>
+
+
+
 <%= link_to "Back" , root_path %>
 <%= link_to "Edit" , edit_post_path %>
 <%= link_to "Delete" , post_path , method: :delete, data: { confirm: "Are you Sure?"}%>
