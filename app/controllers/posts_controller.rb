@@ -25,7 +25,7 @@ class PostsController < ApplicationController
     config.access_token_secret = "XZRN2fsVrVEX6r2YPsK3KcIDSaIglApg75ZNYIvwa9AOe"
 end
 
-    client.update_with_media( post.caption, File.new(post.image.path))
+    client.update_with_media(post.caption, File.new(post.image.path))
 
     uploader = InstagramUploader::Uploader.new('07712677611', 'sparta')
     uploader.upload(post.image.path, post.caption)

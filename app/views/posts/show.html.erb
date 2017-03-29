@@ -17,6 +17,7 @@
 <% current_user.update_attribute :admin, true %>
 <%end %>
 
+
 <% if current_user.try(:admin?) %>
 <form class="" action="<%= upload_insta_path %>" method="post">
 
