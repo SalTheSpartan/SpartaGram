@@ -13,16 +13,21 @@
 <p>Likes: <%= @post.likes.length %></p>
 
 
+<% if current_user.email === "samudoh93@gmail.com"%>
+<% current_user.update_attribute :admin, true %>
+<%end %>
 
-
+<% if current_user.try(:admin?) %>
 <form class="" action="<%= upload_insta_path %>" method="post">
 
-<button type="submit" class="btn btn-primary">Upload To Instagram</button>
+<button type="submit" class="btn btn-primary">Upload To Social Media</button>
 
 <input type="hidden" name="id" value="<%= @post.id %>">
 <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 
 </form>
+<% end %>
+
 
 
   <%= pluralize(@post.comments.count, "Comment") %>

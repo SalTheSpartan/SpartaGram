@@ -14,6 +14,7 @@ class LikesController < ApplicationController
     post.save
     user.save
     #  remove current user from post.likes
+    redirect_to post
 
   end
 end
