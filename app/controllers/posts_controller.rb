@@ -16,10 +16,16 @@ class PostsController < ApplicationController
   def upload_insta
     # imagePath = 'public' + params[:postImageUrl]
     # imageCaption = params[:postImageCaption]
-
     post = Post.find(params[:id])
 
-    puts post.image.path
+    client = Twitter::REST::Client.new do |config|
+    config.consumer_key    = "BdpIfMqCo4gkk57KsrXdeyeMl"
+    config.consumer_secret = "hv5x5XU8JxAOHEmmvwkPOEBFBMMVxD2Spil4QsJ30Wt6Wr7c3W"
+    config.access_token    = "847059707995045888-rB0OXKOFAcRoaaq0BOCflB67D6sKm2I"
+    config.access_token_secret = "XZRN2fsVrVEX6r2YPsK3KcIDSaIglApg75ZNYIvwa9AOe"
+end
+
+    client.update_with_media( post.caption, File.new(post.image.path))
 
     uploader = InstagramUploader::Uploader.new('07712677611', 'sparta')
     uploader.upload(post.image.path, post.caption)

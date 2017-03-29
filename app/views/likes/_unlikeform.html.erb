@@ -1,0 +1,6 @@
+<form class="" action="<%= post_like_path post %>" method="Post">
+  <input name="_method" type="hidden" value="DELETE" />
+
+  <input type="submit" name="" value="Unlike">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+</form>

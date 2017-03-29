@@ -4,6 +4,16 @@
 <img src="<%= @post.image.medium.url %>" />
 <p><%= @post.caption %></p>
 <p>Submitted by <%= current_user.name%></p>
+<% if !hasUserLiked(@post, current_user.liked) %>
+  <%= render 'likes/likesform' , post: @post %>
+<% else %>
+<%= render 'likes/unlikeform' , post: @post %>
+<% end%>
+
+<p>Likes: <%= @post.likes.length %></p>
+
+
+
 
 <form class="" action="<%= upload_insta_path %>" method="post">
 
