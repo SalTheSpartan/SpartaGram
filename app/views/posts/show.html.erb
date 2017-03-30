@@ -1,53 +1,78 @@
-<h1>Show Post Page</h1>
-
-<h2><%= @post.title %></h2>
-<img src="<%= @post.image.medium.url %>" />
-<p><%= @post.caption %></p>
-<p>Submitted by <%= current_user.name%></p>
-<% if !hasUserLiked(@post, current_user.liked) %>
-  <%= render 'likes/likesform' , post: @post %>
-<% else %>
-<%= render 'likes/unlikeform' , post: @post %>
-<% end%>
-
-<p>Likes: <%= @post.likes.length %></p>
-
-
-<% if current_user.email === "samudoh93@gmail.com"%>
-<% current_user.update_attribute :admin, true %>
-<%end %>
-
-
-<% if current_user.try(:admin?) %>
-<form class="" action="<%= upload_insta_path %>" method="post">
-
-<button type="submit" class="btn btn-primary">Upload To Social Media</button>
-
-<input type="hidden" name="id" value="<%= @post.id %>">
-<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-
-</form>
-<% end %>
-
-
-
-  <%= pluralize(@post.comments.count, "Comment") %>
-  <% @comments.each do |comment| %>
-    <div class="comment">
-      <h2>
-      <p class="username">
-        <%= comment.user.name %>
-      </p>
+<div id="post_show">
+<h1><%= @post.title %></h1>
+<br>
+<p class="username">Submitted by <%= @post.user.name%></p>
+<div class="clearfix">
+  <div class="post_image_description">
+    <img src="<%= @post.image.medium.url %>" />
+      <div class="description">
+        <p><%= @post.caption %></p>
+      </div>
+  </div>
+  <div class="post_data">
+    <div id="comments">
+      <h2 class="comment_count">
       </h2>
-      <p class="content">
-        <%= comment.content %>
-      </p>
+      <% @comments.each do |comment| %>
+        <div class="comment">
+          <p class="username">
+            <%= comment.user.name %>
+          </p>
+          <p class="content">
+            <%= comment.content %>
+          </p>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-  <%= render "comments/commentform" %>
+
+
+    <p class="data">
+      <i class="fa fa-comments-o"></i>
+      <%= pluralize(@post.comments.count, "Comment") %>
+      <%= render "comments/commentform" %>
+      <p class="data">
+        <i class="fa fa-thumbs-o-up"></i>
+        <%= pluralize(@post.likes.count, "Like") %>
+      </p>
+
+      <p class="likesection">
+      <% if !hasUserLiked(@post, current_user.liked) %>
+        <%= render 'likes/likesform' , post: @post %>
+      <% else %>
+        <%= render 'likes/unlikeform' , post: @post %>
+      <% end%>
+      </p>
+
+      <% if current_user.email === "samudoh93@gmail.com"%>
+        <% current_user.update_attribute :admin, true %>
+      <%end %>
+      <% if current_user.try(:admin?) %>
+        <form class="" action="<%= upload_insta_path %>" method="post">
+
+          <button type="submit" class="btn btn-outline-primary">Upload To Social Media</button>
+
+          <input type="hidden" name="id" value="<%= @post.id %>">
+          <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+
+        </form>
+      <% end %>
+    </p>
+
+    <% if @post.user.id == current_user.id %>
+      <%= link_to "Edit" , edit_post_path %>
+      <%= link_to "Delete" , post_path , method: :delete, data: { confirm: "Are you Sure?"}%>
+    <%end %>
 
 
 
-<%= link_to "Back" , root_path %>
-<%= link_to "Edit" , edit_post_path %>
-<%= link_to "Delete" , post_path , method: :delete, data: { confirm: "Are you Sure?"}%>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+</div>

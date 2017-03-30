@@ -24,26 +24,26 @@ class PostsController < ApplicationController
     config.access_token    = "847059707995045888-rB0OXKOFAcRoaaq0BOCflB67D6sKm2I"
     config.access_token_secret = "XZRN2fsVrVEX6r2YPsK3KcIDSaIglApg75ZNYIvwa9AOe"
 end
-
+# Twitter
     client.update_with_media(post.caption, File.new(post.image.path))
+
 
     uploader = InstagramUploader::Uploader.new('07712677611', 'sparta')
     uploader.upload(post.image.path, post.caption)
     post.caption.gsub(/[\'\n]/, '  ').gsub(/[^[:print:]]/) {|x| x.ord}
-
     redirect_to show, notice: "Succesfully Uploaded to Instagram"
   end
 
   def new #display the new posts
     @post = Post.new
-    # puts current_user.
+
 
     #add template
   end
 
   def create #save new posts
     @post = Post.new(post_params)
-
+    @post.user_id = current_user.id
     #will save and rediret
     if @post.save
       redirect_to @post, notice: "Succesfully created a new Post"
