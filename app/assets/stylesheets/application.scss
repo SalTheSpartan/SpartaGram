@@ -121,3 +121,81 @@ header {
  transform:translateY(-50%);
 
 }
+
+
+@media (max-width: 360px) {
+  .post_image{
+    height: 81px!important;
+
+  }
+  .test{
+    width: 70%;
+    top: 45%;
+  }
+  .formwidth{
+    width: 58%;
+  }
+  #post_show{
+    padding-left: 70px;
+  }
+  #post_show img{
+      width: 149%;
+  }
+}
+@media (max-width: 375px) {
+  .post_image{
+    height: 100px!important;
+
+  }
+  .test{
+    width: 70%;
+    top: 45%;
+  }
+  .formwidth{
+    width: 58%;
+  }
+  #post_show{
+    padding-left: 70px;
+  }
+  #post_show img{
+      width: 149%;
+  }
+}
+@media (max-width: 412px) {
+  .post_image{
+    height: 104px!important;
+
+  }
+  .test{
+    width: 70%;
+    top: 45%;
+  }
+  .formwidth{
+    width: 58%;
+  }
+  #post_show{
+    padding-left: 36px;
+  }
+  #post_show img{
+      width: 149%;
+  }
+}
+@media (max-width: 414px) {
+  .post_image{
+    height: 104px!important;
+
+  }
+  .test{
+    width: 70%;
+    top: 45%;
+  }
+  .formwidth{
+    width: 58%;
+  }
+  #post_show{
+    padding-left: 72px;
+  }
+  #post_show img{
+      width: 149%;
+  }
+}
