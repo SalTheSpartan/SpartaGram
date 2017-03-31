@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!
 
   def index
     @posts = Post.all.order("created_at DESC")
@@ -19,13 +19,18 @@ class PostsController < ApplicationController
     post = Post.find(params[:id])
 
     client = Twitter::REST::Client.new do |config|
-    config.consumer_key    = "BdpIfMqCo4gkk57KsrXdeyeMl"
-    config.consumer_secret = "hv5x5XU8JxAOHEmmvwkPOEBFBMMVxD2Spil4QsJ30Wt6Wr7c3W"
-    config.access_token    = "847059707995045888-rB0OXKOFAcRoaaq0BOCflB67D6sKm2I"
-    config.access_token_secret = "XZRN2fsVrVEX6r2YPsK3KcIDSaIglApg75ZNYIvwa9AOe"
-end
+      config.consumer_key    = "BdpIfMqCo4gkk57KsrXdeyeMl"
+      config.consumer_secret = "hv5x5XU8JxAOHEmmvwkPOEBFBMMVxD2Spil4QsJ30Wt6Wr7c3W"
+      config.access_token    = "847059707995045888-rB0OXKOFAcRoaaq0BOCflB67D6sKm2I"
+      config.access_token_secret = "XZRN2fsVrVEX6r2YPsK3KcIDSaIglApg75ZNYIvwa9AOe"
+    end
 # Twitter
+    # url = "https://s3.eu-west-2.amazonaws.com/spartagram/#{post.image.file.path}"
+    # client.update(url)
+    # client.update_with_media(post.caption, File.new(url))
     client.update_with_media(post.caption, File.new(post.image.path))
+    # binding.pry
+    # "https://s3.eu-west-2.amazonaws.com/spartagram/uploads/post/image/ #{post.id} /"
 
 
     uploader = InstagramUploader::Uploader.new('07712677611', 'sparta')
