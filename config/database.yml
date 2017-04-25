@@ -94,10 +94,12 @@ test:
 #
 production:
   <<: *default
-  database: app_production
+  database: spartagram
   adapter: postgresql
-  host: <%= ENV['DATABASE_URL'] %>
+  host: <%= ENV['HOST_URL'] %>
   username: spartagram
   password: <%= ENV['APP_DATABASE_PASSWORD'] %>
   encoding: unicode
-  pool: 5
+  port: 5432
+
+
