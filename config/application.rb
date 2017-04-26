@@ -1,4 +1,7 @@
 require_relative 'boot'
+require 'pry'
+require 'instagram_uploader'
+
 
 require 'rails/all'
 
